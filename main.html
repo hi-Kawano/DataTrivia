@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Page Title</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div id="icon"class="icon" style="align-items: center;">
+    <img src="USA_flag.png" style="width:80px"/>
+    <p>Disinformation</p>
+    </div>
+
+    <div class="window" id="retroWindow" style="display: none">
+    <div class="title-bar" id="titleBar">
+        Disinformation
+        <button class="close-btn" onclick="closeWindow()">✕</button>
+    </div>
+    <div class="content">
+
+        
+    <div style="width: 100%; height: 30px;">
+        <canvas id ='answerChart'></canvas>
+    </div>
+    <p id = "score">Score: 0/0</p>
+    <p id ="index" style="margin-top:-20px">Question Label: </p>
+    <div id="introduction" >
+    <p style="font-family: 'Comic Sans MS', cursive, sans-serif;font-size: 2em;"> 
+    Can you distinguish between random numbers and information from US federal databases? <br><br> Given a graph, determine if it is faked or from a real source. It's a 50/50 chance so try to do better than random guessing! <br><br> P.S. the score saves even if you close the window.
+    </p>
+    <pre style="width: 50%">
+   ______   __       __  __   ______
+  / ____/  / /      / / / /  / ____/
+ / / __   / /      / /_/ /  / /_    
+/ /_/ /  / /___   / __  /  / __/    
+\____/  /_____/  /_/ /_/  /_/       
+    </pre>
+    <button id="startBtn" style="font-size: 3em;">Begin</button>                      
+    </div>
+    
+    <canvas id="myChart" style="background-color: rgb(0, 0, 0);border: 20px solid rgb(209, 209, 209); display: none"></canvas>
+    
+    <div id="infoBox" style="display: none; background-color: black; padding:10px">
+        <pre id="ASCII" class="extraInfoContent"></pre>
+            <div class="button-container" style="margin-left: 60px;">
+                <p id='lemon'class="extraInfoContent" style="color:lime; margin-left: 8px; font-size:1em"></p>
+                <button id="viewRealData" style="display: none; width: 30vw">View Real</button>
+                <button id="nextBtn" style="display: none">Next</button>
+            </div>
+
+    </div>
+    <div id="actionButtons" style="display: none; text-align: center;margin-top: 20px;" class="button-container">
+        
+        <button id="realChartBtn">Real</button>
+        <button id="fakeChartBtn">Fake</button>
+    </div>
+    </div>
+    </div>
+    <div class="taskbar">
+        <button class="start-button">Start</button>
+        <div class="taskbar-space"></div>
+        <div class="clock" id="clock"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script>
+  const windowEl = document.getElementById('retroWindow');
+  const titleBar = document.getElementById('titleBar');
+
+  let offsetX = 0, offsetY = 0, isDragging = false;
+
+  titleBar.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    offsetX = e.clientX - windowEl.offsetLeft;
+    offsetY = e.clientY - windowEl.offsetTop;
+  });
+
+  document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    const titleBarHeight = 100;
+    const maxX = window.innerWidth - windowEl.offsetWidth;
+    const maxY = window.innerHeight - titleBarHeight; // only clamp top bar
+
+    let newX = e.clientX - offsetX;
+    let newY = e.clientY - offsetY;
+
+    // Clamp so the title bar stays visible
+    newX = Math.max(0, Math.min(newX, maxX));
+    newY = Math.max(0, Math.min(newY, maxY));
+
+    windowEl.style.left = `${newX}px`;
+    windowEl.style.top = `${newY}px`;
+  }
+});
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+</script>
+</body>
+</html>
