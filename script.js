@@ -285,7 +285,7 @@ document.getElementById('startBtn').addEventListener('click', () => {
   document.getElementById('myChart').style.display = 'none';
   randomBool = Math.random() < 0.5;
   randomInt = pick_index();
-  createChart(randomBool,randomInt);
+  await createChart(randomBool,randomInt);
   document.getElementById('actionButtons').style.display = 'block';
   document.getElementById('myChart').style.display = 'block';
   document.getElementById('introduction').style.display = 'none';
@@ -443,6 +443,7 @@ const ctx2 = document.getElementById('answerChart').getContext('2d');
 
 setInterval(updateClock, 1000);
 updateClock(); 
+
 
 
 
