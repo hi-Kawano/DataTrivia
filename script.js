@@ -183,7 +183,7 @@ function generateConfig(data,labels,chart_type,description){
         },
         title: {
           display: true,
-          text: 'Is this data real❓ 🤔',
+          text: 'Is this data real?',
           color: '#FF00FF',
           font: {
             family: 'Impact',
@@ -439,3 +439,4 @@ const ctx2 = document.getElementById('answerChart').getContext('2d');
 
 setInterval(updateClock, 1000);
 updateClock(); 
+
