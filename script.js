@@ -55,10 +55,13 @@ function closeWindow() {
   document.getElementById('actionButtons').style.display = 'none';
 }
 document.getElementById('icon').addEventListener('click', () => {
-  document.getElementById('index').textContent = "Question Label: "
-  document.getElementById('startBtn').style.display = 'block';
-  document.getElementById('introduction').style.display = 'block';
-  document.getElementById('retroWindow').style.display = 'block';
+  if(document.getElementById('retroWindow').style.display == 'none'){
+     document.getElementById('index').textContent = "Question Label: "
+     document.getElementById('startBtn').style.display = 'block';
+     document.getElementById('introduction').style.display = 'block';
+     document.getElementById('retroWindow').style.display = 'block';
+  }
+
 });
 
 async function fetchCSVData(url) {
@@ -440,5 +443,6 @@ const ctx2 = document.getElementById('answerChart').getContext('2d');
 
 setInterval(updateClock, 1000);
 updateClock(); 
+
 
 
