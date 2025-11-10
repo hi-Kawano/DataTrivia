@@ -55,7 +55,7 @@ function closeWindow() {
   document.getElementById('actionButtons').style.display = 'none';
 }
 document.getElementById('icon').addEventListener('click', () => {
-  if(document.getElementById('retroWindow').style.display == 'none'){
+  if(window.getComputedStyle(document.getElementById('retroWindow')).display === 'none'){
      document.getElementById('index').textContent = "Question Label: "
      document.getElementById('startBtn').style.display = 'block';
      document.getElementById('introduction').style.display = 'block';
@@ -443,6 +443,7 @@ const ctx2 = document.getElementById('answerChart').getContext('2d');
 
 setInterval(updateClock, 1000);
 updateClock(); 
+
 
 
 
